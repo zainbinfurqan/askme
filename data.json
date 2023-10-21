@@ -1,0 +1,54 @@
+{
+    "browse": [{
+        "type": "question",
+        "question": "I am relocating to Malaysia  Shah alam, already have a job their, I am single , how money should i bring to Malaysia",
+        "country": "Pakistan",
+        "tags": ["Malaysia", "shah alam", "relocated", "job"],
+        "city": "karachi",
+        "area":"nazimabad",
+        "credibility": 0,
+        "likes": 0,
+        "comments": [
+            {"id": 1, "userId": 1, "text": " when an unknown printer took a galley of type and scrambled it to make a type ",
+                 "nested": [
+                    {"id": 1, "userId": 1, "text": " nested when an unknown printer took a galley of type and scrambled it to make a type ", "isAnonymous":true },
+                    {"id": 1, "userId": 1, "text": " nested when an unknown printer took a galley of type and scrambled it to make a type ", "isAnonymous":true }
+                 ], "isAnonymous":true },
+            {"id": 2, "userId": 2, "text": " when an unknown printer took a galley of type and scrambled it to make a type ",
+                 "nested": [], "isAnonymous":true },
+            {"id": 3, "userId": 3, "text": " when an unknown printer took a galley of type and scrambled it to make a type ",
+                 "nested": [], "isAnonymous":false }
+        ],
+        "shares": 0
+    },
+    {
+        "type": "question",
+        "question": "ask me question 2",
+        "country": "India",
+        "city": "delih",
+        "area":"dongri",
+        "credibility": 0,
+        "likes": 0,
+        "comments": [
+            {"id": 1, "userId": 1, "text": " when an unknown printer took a galley of type and scrambled it to make a type alley of type and scrambled it to make a type ", "nested": [], "isAnonymous":true },
+            {"id": 2, "userId": 2, "text": " when an unknown printer took a galley of type and scrambled it to make a type ", "nested": [], "isAnonymous":false },
+            {"id": 3, "userId": 3, "text": " when an unknown printer took a galley of type and scrambled it to make a type ", "nested": [], "isAnonymous":true }
+        ],
+        "shares": 0
+    },
+    {
+        "type": "suggestion",
+        "suggestion": "suggestions 1",
+        "country": "Australia",
+        "city": "houstan",
+        "area":"austn",
+        "credibility": 0,
+        "likes": 0,
+        "comments": [
+            {"id": 1, "userId": 1, "text": " when an unknown printer took a galley of type and scrambled it to make a type ", "nested": [], "isAnonymous":false },
+            {"id": 2, "userId": 2, "text": " when an unknown printer took a galley of type and scrambled it to make a type ", "nested": [], "isAnonymous":true },
+            {"id": 3, "userId": 3, "text": " when an unknown printer took a galley of type and scrambled it to make a type ", "nested": [], "isAnonymous":false }
+        ],
+        "shares": 0
+    }]
+}

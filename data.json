@@ -1,7 +1,7 @@
 {
     "browse": [{
         "type": "question",
-        "question": "I am relocating to Malaysia  Shah alam, already have a job their, I am single , how money should i bring to Malaysia",
+        "question": "I am relocating  asdas asd asd asd asd asd as dasda asdto Malaysia  Shah alam, already have a job their, I am single , how money should i bring to Malaysia",
         "country": "Pakistan",
         "tags": ["Malaysia", "shah alam", "relocated", "job"],
         "city": "karachi",
@@ -10,14 +10,21 @@
         "likes": 0,
         "comments": [
             {"id": 1, "userId": 1, "text": " when an unknown printer took a galley of type and scrambled it to make a type ",
+                "credibility": 0,
                  "nested": [
-                    {"id": 1, "userId": 1, "text": " nested when an unknown printer took a galley of type and scrambled it to make a type ", "isAnonymous":true },
-                    {"id": 1, "userId": 1, "text": " nested when an unknown printer took a galley of type and scrambled it to make a type ", "isAnonymous":true }
+                    {"id": 1, "userId": 1, "text": " nested when an unknown printer took a galley of type and scrambled it to make a type ", 
+                    "credibility": 5,
+                    "isAnonymous":true },
+                        {"id": 1, "userId": 1, "text": " nested when an unknown printer took a galley of type and scrambled it to make a type ", 
+                    "credibility": 0,
+                    "isAnonymous":true }
                  ], "isAnonymous":true },
             {"id": 2, "userId": 2, "text": " when an unknown printer took a galley of type and scrambled it to make a type ",
-                 "nested": [], "isAnonymous":true },
+                 "nested": [], 
+                 "credibility": 0,"isAnonymous":true },
             {"id": 3, "userId": 3, "text": " when an unknown printer took a galley of type and scrambled it to make a type ",
-                 "nested": [], "isAnonymous":false }
+                 "nested": [], 
+                 "credibility": 0,"isAnonymous":false }
         ],
         "shares": 0
     },
@@ -30,9 +37,12 @@
         "credibility": 0,
         "likes": 0,
         "comments": [
-            {"id": 1, "userId": 1, "text": " when an unknown printer took a galley of type and scrambled it to make a type alley of type and scrambled it to make a type ", "nested": [], "isAnonymous":true },
-            {"id": 2, "userId": 2, "text": " when an unknown printer took a galley of type and scrambled it to make a type ", "nested": [], "isAnonymous":false },
-            {"id": 3, "userId": 3, "text": " when an unknown printer took a galley of type and scrambled it to make a type ", "nested": [], "isAnonymous":true }
+            {"id": 1, "userId": 1, "text": " when an unknown printer took a galley of type and scrambled it to make a type alley of type and scrambled it to make a type ", 
+            "credibility": 0,"nested": [], "isAnonymous":true },
+            {"id": 2, "userId": 2, "text": " when an unknown printer took a galley of type and scrambled it to make a type ", 
+            "credibility": 0,"nested": [], "isAnonymous":false },
+            {"id": 3, "userId": 3, "text": " when an unknown printer took a galley of type and scrambled it to make a type ", "nested": [], 
+            "credibility": 0,"isAnonymous":true }
         ],
         "shares": 0
     },
@@ -45,10 +55,46 @@
         "credibility": 0,
         "likes": 0,
         "comments": [
-            {"id": 1, "userId": 1, "text": " when an unknown printer took a galley of type and scrambled it to make a type ", "nested": [], "isAnonymous":false },
-            {"id": 2, "userId": 2, "text": " when an unknown printer took a galley of type and scrambled it to make a type ", "nested": [], "isAnonymous":true },
-            {"id": 3, "userId": 3, "text": " when an unknown printer took a galley of type and scrambled it to make a type ", "nested": [], "isAnonymous":false }
+            {"id": 1, "userId": 1, "text": " when an unknown printer took a galley of type and scrambled it to make a type ", "nested": [], 
+            "credibility": 0,"isAnonymous":false },
+            {"id": 2, "userId": 2, "text": " when an unknown printer took a galley of type and scrambled it to make a type ", "nested": [], 
+            "credibility": 0,"isAnonymous":true },
+            {"id": 3, "userId": 3, "text": " when an unknown printer took a galley of type and scrambled it to make a type ", "nested": [],
+            "credibility": 0, "isAnonymous":false }
         ],
         "shares": 0
-    }]
+    }],
+    "countries": {
+        "Pakistan" : {
+            "karachi": {
+                "title": "nazimabad"
+            }
+        },
+        "India" : {
+            "karachi": {
+                "title": "nazimabad"
+            }
+        },
+        "Australia" : {
+            "karachi": {
+                "title": "nazimabad"
+            }
+        },
+        "USA" : {
+            "karachi": {
+                "title": "nazimabad"
+            }
+        },
+        "Malaysia" : {
+            "karachi": {
+                "title": "nazimabad"
+            }
+        },
+        "Japan" : {
+            "karachi": {
+                "title": "nazimabad"
+            }
+        }
+    }
+      
 }

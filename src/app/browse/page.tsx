@@ -5,7 +5,7 @@ import ProfilPic from '../../../assets/images/profile-pic.png'
 
 function Browse(props:any) {
     return (
-        <div className='p-4 font-mono'>
+        <div className='p-4'>
             <div className='flex flex-col justify-center'>
                 <div className='px-4 flex flex-row'>
                     <input className='w-full h-10 rounded-full placeholder:px-2 px-2 mx-2' placeholder='Search...' />
@@ -15,19 +15,42 @@ function Browse(props:any) {
                 </div>
                 <div className='mx-9 py-2 flex flex-row'>
                     <div>
-                        <div className='border px-4 bg-white  w-40 rounded-ss rounded-se'><p>Select Country</p></div>
+                        <div className='border px-4 bg-white  w-40 rounded-ss rounded-se'><p className='text-sm py-2'>Select Country</p></div>
                         <div className='border px-4 bg-white absolute h-48 overflow-scroll w-40 rounded-es rounded-ee'>
                             {Object.keys(data.countries).map(item=>{
                                 return (
-                                    <p className='py-2'>{item}</p>
+                                    <p className='py-2 cursor-pointer'>{item}</p>
                                 )
                             })}
                         </div>
                     </div>
-                    <div>
-                        <div className='flex flex-row m-2 px-2 text-white font-bold py-1 text-xs bg-[#7DD3FC] rounded-full'>
-                            <p className='px-1 cursor-pointer'>High Credibility</p>
+                    <div className='flex flex-row mx-2'>
+                        <div className='border px-4 bg-white h-fit items-center rounded-ss rounded-se flex flex-row'>
+                            <p className='text-sm py-2 mr-1'>Sort</p>
+                            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 8H13" stroke="#7DD3FC" stroke-width="1.5" stroke-linecap="round"></path> <path d="M6 13H13" stroke="#7DD3FC" stroke-width="1.5" stroke-linecap="round"></path> <path d="M8 18H13" stroke="#7DD3FC" stroke-width="1.5" stroke-linecap="round"></path> <path d="M17 20V4L20 8" stroke="#7DD3FC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                         </div>
+                        <div className='border px-4 absolute ml-[5.6rem] bg-white overflow-scroll w-40 rounded-es rounded-ee py-4'>
+                            <p className='text-sm font-bold'>Credibility</p>
+                            <div className='flex  items-center justify-center flex-row'>
+                                <div className='flex flex-row m-2 px-2 text-white font-bold py-1 text-xs bg-[#7DD3FC] rounded-full'>
+                                    <p>High</p>
+                                </div>
+                                <div><p>to</p></div>
+                                <div className='flex flex-row m-2 px-2 text-white font-bold py-1 text-xs bg-[#7DD3FC] rounded-full'>
+                                        <p>Low</p>
+                                </div>
+                            </div>
+                            <div className='flex  items-center justify-center flex-row'>
+                                <div className='flex flex-row m-2 px-2 text-white font-bold py-1 text-xs bg-[#7DD3FC] rounded-full'>
+                                    <p>Low</p>
+                                </div>
+                                <div><p>to</p></div>
+                                <div className='flex flex-row m-2 px-2 text-white font-bold py-1 text-xs bg-[#7DD3FC] rounded-full'>
+                                    <p>High</p>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
                 

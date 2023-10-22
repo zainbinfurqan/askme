@@ -8,9 +8,9 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    fontFamily:{
-      'mono': ['ui-monospace', 'Menlo', 'Monaco', 'monospace']
-    },
+    // fontFamily:{
+    //   'mono': ['ui-monospace', 'Menlo', 'Monaco', 'monospace']
+    // },
     screens: {
       'xl': {'max': '1440px'},
       'lg': {'max': '1024px'},

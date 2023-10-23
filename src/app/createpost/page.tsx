@@ -8,7 +8,7 @@ const dbInstance = collection(database, 'posts');
 function CreatePost(props:any) {
 
     const  createPost = async () => {
-         await addDoc(dbInstance,{
+         await addDoc(dbInstance,   {
             type: "question",
             question: "I am relocating  asdas asd asd asd asd asd as dasda asdto Malaysia  Shah alam, already have a job their, I am single , how money should i bring to Malaysia",
             country: "Pakistan",
@@ -20,7 +20,6 @@ function CreatePost(props:any) {
             comments: [],
             shares: 0
         })
-      
     }
 
     return (

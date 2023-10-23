@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import data from '../../../data.json'
 import Image from 'next/image'
 import ProfilPic from '../../../assets/images/profile-pic.png'
-import { addDoc, collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import {database} from '../../../firebase'
 const dbInstance = collection(database, 'posts');
 
@@ -16,12 +16,10 @@ function Browse(props:any) {
 
     const getData =  async() => {
         const data = await getDocs(dbInstance)
-        const newData = []
+        const newData: any = []
         data.forEach((doc) => {
-            // console.log(doc)
             newData.push(doc.data())
           });
-        //   console.log("posts",posts)
           setData(newData)
     }
 
@@ -120,8 +118,7 @@ function Browse(props:any) {
                 </div>
                 
                 <div className='flex flex-row flex-wrap justify-center'>
-                    {console.log("posts",posts)}
-                {posts.length> 0 && posts.map(item=>{
+                {posts.length> 0 && posts.map((item: any)=>{
                     return(
                         <div className='p-4 border b-2 rounded-lg shadow-xl m-4 w-[47%] bg-white sm:w-full sm:my-2 sm:mx-0 md:w-full lg:w-[47%] lg:mx-1 xl:w-[31%] xl:mx-1'>
                         <div>
@@ -139,7 +136,7 @@ function Browse(props:any) {
                                 <p className='text-xs'>{item.area}</p>
                             </div>
                             <div className='flex flex-row '>
-                                {item.tags?.length >0 && item.tags?.map((tag,index)=>{
+                                {item.tags?.length >0 && item.tags?.map((tag: any)=>{
                                     return (
                                         <>
                                             <p className='p-1 text-xs border rounded bg-[#78716C] text-white'>{'#'+tag}</p><span> &nbsp;</span>
@@ -167,7 +164,7 @@ function Browse(props:any) {
                             </div>
                         </div>
                             {item.comments.length > 0 && <div className='overflow-scroll h-96'>
-                                        {item.comments.map(comment=>{
+                                        {item.comments.map((comment:any)=>{
                                             return (
                                                 <div className='border border-[#F5F5F4] p-2 my-3'>
                                                     <div className='flex flex-row flex-wrap'>
@@ -176,7 +173,7 @@ function Browse(props:any) {
                                                     </div>
                                                     <p className='text-xs my-2 ml-9 bg-[#F5F5F5] py-2 px-2 shadow-sm rounded-lg'>{comment.text}</p>
                                                     <p className='text-[0.6rem] my-2 ml-9 w-fit font-bold text-white bg-[#7DD3FC] p-1 shadow-sm rounded-lg'>Credibility  &nbsp;{comment.credibility}</p>
-                                                    {comment.nested.map(nestedComment=>{
+                                                    {comment.nested.map((nestedComment:any)=>{
                                                         return(
                                                             <div className='  p-2 my-3 ml-9'>
                                                                 <div className='flex flex-row flex-wrap'>

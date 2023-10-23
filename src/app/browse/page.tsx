@@ -1,9 +1,30 @@
-import React from 'react';
+'use client'
+import React, { useEffect, useState } from 'react';
 import data from '../../../data.json'
 import Image from 'next/image'
 import ProfilPic from '../../../assets/images/profile-pic.png'
+import { addDoc, collection, getDocs } from 'firebase/firestore';
+import {database} from '../../../firebase'
+const dbInstance = collection(database, 'posts');
 
 function Browse(props:any) {
+    const [posts, setData] =useState([])
+
+    useEffect(()=>{
+        getData()
+    },[])
+
+    const getData =  async() => {
+        const data = await getDocs(dbInstance)
+        const newData = []
+        data.forEach((doc) => {
+            // console.log(doc)
+            newData.push(doc.data())
+          });
+        //   console.log("posts",posts)
+          setData(newData)
+    }
+
     return (
         <div className=''>
             <div className=' mb-8'>
@@ -99,7 +120,8 @@ function Browse(props:any) {
                 </div>
                 
                 <div className='flex flex-row flex-wrap justify-center'>
-                {data.browse.map(item=>{
+                    {console.log("posts",posts)}
+                {posts.length> 0 && posts.map(item=>{
                     return(
                         <div className='p-4 border b-2 rounded-lg shadow-xl m-4 w-[47%] bg-white sm:w-full sm:my-2 sm:mx-0 md:w-full lg:w-[47%] lg:mx-1 xl:w-[31%] xl:mx-1'>
                         <div>

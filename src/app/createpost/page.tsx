@@ -1,22 +1,26 @@
 'use client'
 import React, { useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { addDoc, collection, getDocs } from 'firebase/firestore';
 import {database} from '../../../firebase'
 const dbInstance = collection(database, 'posts');
 
 
 function CreatePost(props:any) {
 
-    useEffect(()=>{
-        getData()
-    },[])
-
-    const  getData = async () => {
-        const data =await getDocs(dbInstance);
-        data.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-          });
+    const  createPost = async () => {
+         await addDoc(dbInstance,{
+            type: "question",
+            question: "I am relocating  asdas asd asd asd asd asd as dasda asdto Malaysia  Shah alam, already have a job their, I am single , how money should i bring to Malaysia",
+            country: "Pakistan",
+            tags: ["Malaysia", "shah alam", "relocated", "job"],
+            city: "karachi",
+            area:"nazimabad",
+            credibility: 0,
+            likes: 0,
+            comments: [],
+            shares: 0
+        })
+      
     }
 
     return (
@@ -36,7 +40,7 @@ function CreatePost(props:any) {
                 </div>
                 <textarea className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username"  placeholder="add tags..."/>
                 <div className="flex items-center justify-between">
-                <button className="w-full my-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                <button onClick={createPost} className="w-full my-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                     Create
                 </button>
                 </div>

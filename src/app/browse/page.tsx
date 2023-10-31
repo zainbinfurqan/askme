@@ -5,6 +5,8 @@ import Image from 'next/image'
 import ProfilPic from '../../../assets/images/profile-pic.png'
 import { arrayUnion, collection, doc, getDocs, setDoc, updateDoc } from 'firebase/firestore';
 import {database} from '../../../firebase'
+import Link from 'next/link'
+
 const dbInstance = collection(database, 'posts');
 
 function Browse(props:any) {
@@ -74,8 +76,9 @@ function Browse(props:any) {
     const handleSubmitComment = async (data: {id: string, comments:[]}, flag: string, floor: string, index: number) => {
         try {
             if(floor === 'single') {
+
                  updateDoc(doc(database, "posts", data.id), {
-                    comments: [...data.comments, {id: 'asss', text: textOnComment.text, nested: []}],
+                    comments: [...data.comments, {id: 'asss', isAnonymous: flag === 'anonymous' ? true : flag === 'user' ? false : true,  text: textOnComment.text, nested: []}],
                     credibility: 0
                 }).then(succ =>{ 
                     setSelectedOption({
@@ -85,7 +88,7 @@ function Browse(props:any) {
                     console.log("succ,",succ)}).catch(err=>{console.log(err)})
             }
             if(floor === 'nested') {
-                data.comments[index].nested.push({id: 'asss', text: textOnComment.nestedText})
+                data.comments[index].nested.push({id: 'asss', isAnonymous: flag === 'anonymous' ? true : flag === 'user' ? false : true, text: textOnComment.nestedText})
                 updateDoc(doc(database, "posts", data.id), data).then(succ =>{
                     setSelectedOption({
                         comment:{id:'', isOpen: false},
@@ -199,12 +202,14 @@ function Browse(props:any) {
                     </div>
                     </div>
                     <div className='self-center'>
-                        <p className={`text-sm px-2 text-white bg-[#7DD3FC] cursor-pointer mr-2 font-bold py-1 shadow-lg rounded-full`}>Create post</p>
+                        <p className={`text-md px-2 text-white bg-[#7DD3FC] cursor-pointer mr-2 font-bold py-1 shadow-lg rounded-full`}>
+                            <Link href="/createpost">Create post</Link>
+                        </p>
                     </div>
                   
                 </div>
                 
-                <div className='flex flex-col flex-wrap m-auto justify-center'>
+                <div className={`flex-col flex-wrap m-auto justify-center ${posts.length === 0 && 'w-1/2'} ${posts.length > 0 && 'flex'}`}>
                 {posts.length> 0 && posts.map((item: any, index)=>{
                     return(
                         <div key={index} className='p-4 border b-2 rounded-lg shadow-xl m-4  bg-white sm:w-full sm:my-2 sm:mx-0 md:w-full lg:mx-1  xl:mx-1'>
@@ -314,6 +319,75 @@ function Browse(props:any) {
                         </div>
                     )
                 })}
+                {posts.length == 0 && 
+                    <div role="status" className="max-w-2xl p-4 space-y-4 border border-gray-200 divide-y divide-gray-200 rounded shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700">
+                        <div className="flex  flex-col">
+                            <div className='flex flex-col my-4'>
+                                <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+                                <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                            </div>
+                            <div className="h-18 bg-gray-300  mt-4">
+                                <div className='flex flex-col my-4'>
+                                    <div className='flex flex-row items-center my-4'>
+                                        <div className="w-6 h-6 bg-gray-200 rounded-full dark:bg-gray-300 m-2"></div>
+                                        <div className="w-24 h-2 bg-gray-200 rounded-full dark:bg-gray-300"></div>
+                                    </div>
+                                    <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-300 m-2 ml-6"></div>
+                                    <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-300 m-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex  flex-col">
+                            <div className='flex flex-col my-4'>
+                                <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+                                <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                            </div>
+                            <div className="h-18 bg-gray-300  mt-4">
+                                <div className='flex flex-col my-4'>
+                                    <div className='flex flex-row items-center my-4'>
+                                        <div className="w-6 h-6 bg-gray-200 rounded-full dark:bg-gray-300 m-2"></div>
+                                        <div className="w-24 h-2 bg-gray-200 rounded-full dark:bg-gray-300"></div>
+                                    </div>
+                                    <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-300 m-2 ml-6"></div>
+                                    <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-300 m-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex flex-col my-4">
+                            <div className='flex flex-col my-4'>
+                                <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+                                <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                            </div>
+                            <div className="h-18 bg-gray-300  mt-4">
+                                <div className='flex flex-col my-4'>
+                                    <div className='flex flex-row items-center my-4'>
+                                        <div className="w-6 h-6 bg-gray-200 rounded-full dark:bg-gray-300 m-2"></div>
+                                        <div className="w-24 h-2 bg-gray-200 rounded-full dark:bg-gray-300"></div>
+                                    </div>
+                                    <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-300 m-2 ml-6"></div>
+                                    <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-300 m-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex  flex-col my-4">
+                            <div className='flex flex-col my-4'>
+                                <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+                                <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                            </div>
+                            <div className="h-18 bg-gray-300  mt-4">
+                                <div className='flex flex-col my-4'>
+                                    <div className='flex flex-row items-center my-4'>
+                                        <div className="w-6 h-6 bg-gray-200 rounded-full dark:bg-gray-300 m-2"></div>
+                                        <div className="w-24 h-2 bg-gray-200 rounded-full dark:bg-gray-300"></div>
+                                    </div>
+                                    <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-300 m-2 ml-6"></div>
+                                    <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-300 m-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    <span className="sr-only">Loading...</span>
+                </div>
+            }
                 </div>
             </div>
         </div>

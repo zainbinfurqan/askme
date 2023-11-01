@@ -1,9 +1,8 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import data from '../../../data.json'
 import Image from 'next/image'
 import ProfilPic from '../../../assets/images/profile-pic.png'
-import { arrayUnion, collection, doc, getDocs, setDoc, updateDoc } from 'firebase/firestore';
+import { collection, doc, getDocs, setDoc, updateDoc } from 'firebase/firestore';
 import {database} from '../../../firebase'
 import Link from 'next/link'
 
@@ -59,7 +58,7 @@ function Browse(props:any) {
         setTextOnComment({id:'', text:'', nestedText:''})
     }
 
-    const handleChangeCommenttext = (e: React.ChangeEvent<HTMLInputElement>, flag: string) => {
+    const handleChangeCommenttext = (e: React.ChangeEvent<HTMLTextAreaElement>, flag: string) => {
         if(flag === 'comment') {
             setTextOnComment({
                 ...textOnComment, text: e.target.value
@@ -214,12 +213,14 @@ function Browse(props:any) {
                     return(
                         <div key={index} className='p-4 border b-2 rounded-lg shadow-xl m-4  bg-white sm:w-full sm:my-2 sm:mx-0 md:w-full lg:mx-1  xl:mx-1'>
                         <div>
+                            <Link href={`/browse/${item.id}`}>
                             {item.type === 'question' ?
                                 <h3 className='text-2xl'>{item.question?.length>50 ? item.question.substring(0, 50) + '...' : item.question }</h3>
                                     : item.type === 'suggestion' ? 
                                         <h3 className='text-2xl'>{item.suggestion.substring(0, 50)}</h3> 
                                             : null
                             }
+                            </Link>
                             <div className='flex flex-row mb-4 text-[#A8A29E]'>
                                 <p className='text-xs'>{item.country}</p>
                                 <span className='h-[7px] w-[7px] bg-[#78716C] mx-2 self-center rounded-full'/>
@@ -320,7 +321,7 @@ function Browse(props:any) {
                     )
                 })}
                 {posts.length == 0 && 
-                    <div role="status" className="max-w-2xl p-4 space-y-4 border border-gray-200 divide-y divide-gray-200 rounded shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700">
+                    <div role="status" className="m-auto max-w-2xl p-4 space-y-4 border border-gray-200 divide-y divide-gray-200 rounded shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700">
                         <div className="flex  flex-col">
                             <div className='flex flex-col my-4'>
                                 <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
@@ -354,22 +355,6 @@ function Browse(props:any) {
                             </div>
                         </div>
                         <div className="flex flex-col my-4">
-                            <div className='flex flex-col my-4'>
-                                <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
-                                <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
-                            </div>
-                            <div className="h-18 bg-gray-300  mt-4">
-                                <div className='flex flex-col my-4'>
-                                    <div className='flex flex-row items-center my-4'>
-                                        <div className="w-6 h-6 bg-gray-200 rounded-full dark:bg-gray-300 m-2"></div>
-                                        <div className="w-24 h-2 bg-gray-200 rounded-full dark:bg-gray-300"></div>
-                                    </div>
-                                    <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-300 m-2 ml-6"></div>
-                                    <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-300 m-2"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex  flex-col my-4">
                             <div className='flex flex-col my-4'>
                                 <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
                                 <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>

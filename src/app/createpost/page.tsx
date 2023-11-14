@@ -2,6 +2,7 @@
 import React, { use, useEffect, useState } from 'react';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 import {database} from '../../../firebase'
+import Link from 'next/link';
 const dbInstance = collection(database, 'posts');
 
 
@@ -15,10 +16,13 @@ function CreatePost(props:any) {
     const  createPost = async () => {
         try {
             const constructNewData: any = {
-                credibility: 0,
-                likes: 0,
+                credibility: [],
+                credibilityCount: 0,
+                likes: [],
+                likesCount: 0,
                 comments: [],
-                shares: 0
+                shares: [],
+                sharesCount: 0
             }
             constructNewData.country = formInputs.country;
             constructNewData.city = formInputs.city;
@@ -27,6 +31,7 @@ function CreatePost(props:any) {
             constructNewData.type = postType;
             constructNewData.question =  postType === 'question' &&  formInputs.text
             constructNewData.suggestion =  postType === 'suggestion' &&  formInputs.text
+            console.log("post data",constructNewData)
             const newData = await addDoc(dbInstance,  constructNewData)
             if(newData){
                 setFormInputs({text:'', country:'',city:'', area:'', tags:''})
@@ -38,6 +43,46 @@ function CreatePost(props:any) {
 
     return (
         <div className='h-screen mx-2'>
+              <div className=' mb-8'>
+            <nav
+                className="relative h-14 flex w-full items-center justify-between bg-white py-2 text-neutral-600 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 dark:text-neutral-200 md:flex-wrap md:justify-start"
+                data-te-navbar-ref>
+                <div className="flex w-full flex-wrap items-center justify-between px-3">
+                <div
+                    className=" grow basis-[100%] items-center lg:!flex lg:basis-auto"
+                    id="navbarSupportedContentY"
+                    data-te-collapse-item>
+                    <ul
+                    className="mr-auto flex flex-row lg:flex-row items-center"
+                    data-te-navbar-nav-ref>
+                    <li className=" px-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+                        <a
+                        className="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white lg:p-2 [&.active]:text-black/90"
+                        href="#!"
+                        data-te-nav-link-ref
+                        data-te-ripple-init
+                        data-te-ripple-color="light"
+                        >Home</a>
+                    </li>
+                    <li className="px-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+                        <a
+                        className="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white lg:p-2 [&.active]:text-black/90"
+                        href="#!"
+                        data-te-nav-link-ref
+                        data-te-ripple-init
+                        data-te-ripple-color="light"
+                        >Profile</a>
+                    </li>
+                    <li className=" px-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+                    <Link href="/feedback"> <p
+                        className="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white lg:p-2 [&.active]:text-black/90"
+                        >FeedBack</p> </Link>
+                    </li>
+                    </ul>
+                </div>
+                </div>
+            </nav>
+            </div>
          <div className="w-2/4 sm:w-full m-auto my-3">
             <p className='text-3xl my-2 font-bold'>Create post</p>
             <form className="bg-white shadow-md  px-8 pt-6 pb-8 mb-4 rounded-lg">

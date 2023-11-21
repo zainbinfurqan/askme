@@ -9,5 +9,10 @@ strategy:
   matrix:
     node-version: [10.x, 12.x, 14.x]
 steps:
-  - name: run test
-    uses: npx jest
+   - name: Checkout code
+      uses: actions/checkout@v2
+      
+   - name: Install dependencies and build
+      run: |
+        npm install
+        npm run build

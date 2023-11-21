@@ -1,6 +1,28 @@
+'use client'
 import React from 'react';
+import {database} from '../../../firebase'
+import { addDoc, collection, getDocs } from 'firebase/firestore';
+const dbInstanceForUserCollection = collection(database, 'users');
+const dbInstanceForWalletCollection = collection(database, 'wallet');
 
 function Login(props:any) {
+
+    const createUser = async () => {
+        const type: string = 'user'
+        const user: any = {
+            password:'asd23dweawe12d',
+            credibility: 0,
+        }
+        user.name =  type === 'anonymouse' ? 'user' +  Math.floor(Math.random() * 100000)  : 'Zain Ahmed'
+        user.email =  type === 'anonymouse' ? 'user' +  Math.floor(Math.random() * 100000) + '@gmail.com'  : 'zain.ahmed199524@gmail.com'
+      
+        const newUser = await addDoc(dbInstanceForUserCollection,user)
+        const newWallet = await addDoc(dbInstanceForWalletCollection,{
+            userId:newUser.id,
+            balance:0
+        })
+    }
+
     return (
 <div>
 <div className="min-h-screen m-auto sm:w-full md:w-2/3 w-2/4 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -58,7 +80,7 @@ function Login(props:any) {
                 </div>
 
                 <div>
-                    <button type="submit"
+                    <button onClick={createUser} type="submit"
                         className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 
                         Sign in
@@ -80,7 +102,7 @@ function Login(props:any) {
                 
             </div>
             <div className='my-4'>
-                    <button type="submit"
+                    <button onClick={createUser} type="submit"
                         className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             Login/Sign-up as Anonymous
                     </button>

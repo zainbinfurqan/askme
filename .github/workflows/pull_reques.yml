@@ -10,9 +10,9 @@ strategy:
     node-version: [10.x, 12.x, 14.x]
 steps:
    - name: Checkout code
-      uses: actions/checkout@v2
+     uses: actions/checkout@v2
       
    - name: Install dependencies and build
-      run: |
+     run: |
         npm install
         npm run build

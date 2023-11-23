@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Profile(p) {
+function Profile(props:any) {
     return (
         <div className='h-screen' >
             <div className="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-16 bg-white shadow-xl rounded-lg text-gray-900">

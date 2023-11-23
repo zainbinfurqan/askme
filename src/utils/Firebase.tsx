@@ -19,5 +19,20 @@ export const Firebase = {
         } catch (error) {
             
         }
+    },
+    addNestedComment: () => {
+        try {
+            
+        } catch (error) {
+            
+        }
+    },
+    giveCredibility: () => {
+        try {
+            
+        } catch (error) {
+            
+        }
     }
+    
 }

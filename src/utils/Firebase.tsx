@@ -5,5 +5,19 @@ export const Firebase = {
         } catch (error) {
             console.log(error)
         }
+    },
+    like: () => {
+        try {
+            
+        } catch (error) {
+            
+        }
+    },
+    unLike: () => {
+        try {
+            
+        } catch (error) {
+            
+        }
     }
 }
